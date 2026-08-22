@@ -13,8 +13,8 @@ server {
         proxy_pass ${API_HOST};
 
         proxy_set_header x-api-key "${API_KEY}";
-        proxy_set_header x-real-ip $remote_add;
-        proxy_set_header x-forwarded-for $proxy_add_forwarded_for;
+        proxy_set_header x-real-ip $remote_addr;
+        proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
         proxy_set_header x-forwarded-proto $scheme;
     }
 
