@@ -1,0 +1,21 @@
+server {
+    listen 3000;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ = 404;
+    }
+
+    location /api/ {
+        proxy_pass ${API_HOST};
+
+        proxy_set_header x-api-key "${API_KEY}";
+        proxy_set_header x-real-ip $remote_add;
+        proxy_set_header x-forwarded-for $proxy_add_forwarded_for;
+        proxy_set_header x-forwarded-proto $scheme;
+    }
+
+}

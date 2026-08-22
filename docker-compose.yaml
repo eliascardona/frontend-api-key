@@ -1,0 +1,12 @@
+services:
+  frontend_nginx_elias:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    container_name: frontend_nginx_elias
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
