@@ -9,7 +9,11 @@ export async function getApiHealth() {
 }
 
 export async function getApiData() {
-  const response = await apiClient.get('/api/data');
+  const response = await apiClient.get(
+    '/api/data',
+    { 'x-api-key': 'F1qHISGk6cwnrRea1dAaSdhevVnVTFhgLHlmaohvibN6SZ' }
+
+  );
 
   console.log('[API CLIENT] - GET /api/data: ', response);
 

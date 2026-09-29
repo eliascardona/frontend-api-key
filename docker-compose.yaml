@@ -1,7 +1,7 @@
 services:
   frontend_nginx_elias:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
 
     container_name: frontend_nginx_elias
@@ -9,8 +9,8 @@ services:
     restart: unless-stopped
 
     environment:
-      API_HOST: ${API_HOST}
-      API_KEY: ${API_KEY}
+      - API_KEY=F1qHISGk6cwnrRea1dAaSdhevVnVTFhgLHlmaohvibN6SZ
+      - API_UPSTREAM=${API_UPSTREAM:-http://host.docker.internal:8082}
 
     ports:
-      - "3000:3000"
+      - "8080:80"
